@@ -1,11 +1,13 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
   application:
     name: finance-dashboard
 
   datasource:
-    url: jdbc:postgresql://aws-1-ap-south-1.pooler.supabase.com:5432/postgres
-    username: postgres.vezfipvjvisfpzullvmh
-    password: FinanceBase@123
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -20,7 +22,7 @@ server:
 
 app:
   jwt:
-    secret: ZmluYW5jZS1kYXNoYm9hcmQtc2VjcmV0LWtleS1mb3Itand0LXRva2VuLWdlbmVyYXRpb24tMjAyNA==
+    secret: ${JWT_SECRET}
     expiration-ms: 86400000
   cors:
     allowed-origins: http://localhost:5173,http://localhost:3000
